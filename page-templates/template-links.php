@@ -27,16 +27,34 @@ Template Name: 友情链接
 							    'orderby'           => 'slug', 
 							    'order'             => 'ASC'
 							);
+
+
+							function get_the_link_items_a($id = null)
+					      {
+					        $bookmarks = get_bookmarks('orderby=date&category=' . $id);
+					        $default_ico = 'https://s.w.org/favicon.ico?2';
+					        $output = '';
+					        if (!empty($bookmarks)) {
+					          $output .= '<div><ul>';
+					          foreach ($bookmarks as $bookmark) {
+					            $output .= '<li style="display: inline-block;width: 203px;line-height: 10px;margin: 0 10px 10px 0;padding: 15px 0px 15px 15px;list-style-type: none;background: rgb(0 0 0 / 2%);transition: .5s;box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset;"><img style="border: 0;-ms-interpolation-mode: bicubic;width: 30px;height: 30px;padding: 0;border: none;display: block;" src="https://zuofei.net/ico/?url=' . $bookmark->link_url . '" onerror="javascript:this.src=\'' . $default_ico . '\'" /><a style="color: #21759b;float: left;margin: -20px 0px 0px 40px;color: #555;text-decoration: none;box-shadow: none;" href="' . $bookmark->link_url . '" title="' . $bookmark->link_description . '" target="_blank" >' . $bookmark->link_name . '</a></li>';
+					          }
+					          $output .= '</ul></div><div class="clear"></div>';
+					        }
+					        return $output;
+					      }
+
+
 						    $linkcats = get_terms('link_category',$args);
 						    $result = '';
 						    if (!empty($linkcats)) {
 						        foreach ($linkcats as $linkcat) {
 						            $result .= '
 						            <h2 class="links-category-title">' . $linkcat->name . '</h2>';
-						            $result .= get_the_link_items($linkcat->term_id);
+						            $result .= get_the_link_items_a($linkcat->term_id);
 						        }
 						    } else {
-						        $result = get_the_link_items();
+						        $result = get_the_link_items_a();
 						    }
 						    echo $result;
 						?>
