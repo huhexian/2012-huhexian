@@ -1,0 +1,33 @@
+/* wp5.3 */
+.option .checkbox {
+	border-radius: 16px !important;
+}
+
+.option input, 
+.option select, 
+.option textarea {
+	border-radius: 2px;
+	border: 1px solid #ddd;
+}
+
+.option input:focus, 
+.option select:focus, 
+.option textarea:focus {
+	border: 1px solid #fff;
+	outline: none
+}
+
+#optionsframework .button-secondary, 
+#optionsframework .button {
+	color: #666;
+	background: #f1f1f1;
+	border: 1px solid #ddd;
+}
+
+#optionsframework .wp-color-result-text {
+	line-height: 26px !important;
+}
+
+#optionsframework input[type="radio"] {
+	border-radius: 50%;
+}
