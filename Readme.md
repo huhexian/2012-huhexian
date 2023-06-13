@@ -1,5 +1,5 @@
 ## 关于主题
-原型是 WordPress 的官方默认主题 Twenty Twelve。后来经 xuv.me 修改为[木头人版本](https://xuv.me)，我在此基础上，根据自己的喜好又进行修改。
+原型是 WordPress 的官方默认主题 Twenty Twelve。后来经 xuv.cc 修改为[木头人版本](https://xuv.cc)，我在此基础上，根据自己的喜好又进行修改。
 
 ## 使用说明
 具体修改了什么内容，可以参考我的文章《[关于我的博客2.0](https://zuofei.net/5029.html)》。
