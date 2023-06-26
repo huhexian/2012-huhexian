@@ -19,7 +19,6 @@
 				
 			</div>
 		<?php endif ?>
-		<script async src="https://umami.eirms.com/script.js" data-website-id="9eddb39a-b5ee-4326-a4d3-7e0fd9ab42a9"></script>
 	</footer><!-- #colophon -->
 
 	<ul id="scroll">
