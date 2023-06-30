@@ -276,7 +276,7 @@ function get_content_first_image( $content ){
 			return get_bloginfo( 'url').$images[1][0];
 		}
 	} else {
-		return get_bloginfo('template_directory').'/img/default_first_img.png';
+		return get_bloginfo('template_directory').'/images/default_first_img.png';
 	}
 }
 //提取裸域 域名提取
