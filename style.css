@@ -2909,3 +2909,9 @@ html.dark, .dark body {
 		max-height: 240px;
 		overflow-x: auto;
 	}
+
+/**友情链接**/
+.link-content li{float:left;text-align: center;width: 100px;font-size:14px;margin-bottom:10px;list-style-type: none;}
+.link-content li img{border-radius:100%;width:64px;height=64px;transition:0.5s;-webkit-transtion:1.5s}
+.link-content li span{display:block}
+.link-content li:hover img{transform:rotate(360deg);-webkit-transform:rotate(360deg);}
