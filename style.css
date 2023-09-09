@@ -1,8 +1,8 @@
 /*
 Theme Name: 2012-huhexian
-Theme URI: https://zuofei.net
-Author: 今是昨非
-Author URI: https://zuofei.net
+Theme URI: https://yinji.org
+Author: 印记
+Author URI: https://yinji.org
 Description: Modified from 2012_mtr 加上你的链接 https://github.com/huhexian/2012-huhexian
 Version: 1.0.2.4
 Tested up to: 6.1
@@ -1397,7 +1397,7 @@ img.post-secret-qr {
     max-width: 200px;
     border: 1px solid #888;
     padding: 4px 12px 0;
-	margin: 10px 0 0 16px;
+    margin: 10px 0 10px 16px;
 }
 .toc_title {
     font-weight: bold;
@@ -2905,7 +2905,7 @@ html.dark, .dark body {
 		max-width: 200px;
 		border: 1px solid #888;
 		padding: 4px 12px 0;
-		margin: 10px 0 0 16px;
+		margin: 10px 0 10px 16px;
 		max-height: 240px;
 		overflow-x: auto;
 	}
