@@ -18,7 +18,9 @@ Licenses: MIT/GPL2
 - [跳跳糖](https://blog.tangzhipeng.top/)
 - [老张博客](https://laozhang.org)
 
-如果你使用了这款主题，不妨提交一个 issue，留下你的站点，我更新在这。
+>**如果你觉得有哪些地方可以改进，欢迎提交PR！！！如果发现了Bug，我不一定能修复，因为我没学过编程，不会前端，不会PHP，但是欢迎大家贡献自己的技术**！
+>
+>**如果你使用了这款主题，可以留下你的网站，我会添加到 GitHub 页面上作为演示站展示**。
 
 ## 联系我
 Twitter：[@huhexian](https://twitter.com/huhexian)
