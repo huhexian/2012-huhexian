@@ -99,7 +99,7 @@ if ( post_password_required() ) {
 								if ( ox_get_option( 'commentform_ad_info' ) ) {
 									echo ox_get_option( 'commentform_ad_info' );
 								} else {
-									echo '主题：<a href="#" rel="noopener" target="_blank">WordPress 经典主题 Twenty Twelve 木头人修改版</a>';
+									echo '这里是广告，可以在comments.php文件中修改';
 								}
 							?>
 						</div>

@@ -67,7 +67,8 @@ $url = str_replace(",", "%2C", $url ); ?>
 		<div class="scene-card-title">页面加载中，请稍后……</div>
 		<div class="scene-card-content">
 			<ul>
-				<li><a title="推荐主机" href="https://eirms.com/lxzj.html" target="_blank" rel="noopener">超值特惠</a>：老薛主机</li>
+				<li><a title="推荐VPS" href="https://yinji.org/RackNerd.html" target="_blank" rel="noopener">超值特惠</a>：RackNerd</li>
+				<li><a title="推荐VPS" href="https://yinji.org/CloudCone.html" target="_blank" rel="noopener">超值特惠</a>：CloudCone</li>
 			</ul>
 		</div>
 
