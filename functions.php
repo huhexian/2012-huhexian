@@ -1497,80 +1497,79 @@ if ( !function_exists( 'sys_uptime' ) ) {
 //内容中自动加入文章目录
 add_filter('the_content',function($content){
 	if( is_singular() ){
+	  global $toc_count;
+	  global $toc;
+	  $toc = array();
+	  $toc_count = 0;
+  
+	  $regex = '#<h([2-4])(.*?)>(.*?)</h\1>#';
+  
+	  $content = preg_replace_callback( $regex, function($content) {
 		global $toc_count;
 		global $toc;
-		$toc = array();
-		$toc_count = 0;
-
-		$regex = '#<h([2-4])(.*?)>(.*?)</h\1>#';
-
-		$content = preg_replace_callback( $regex, function($content) {
-			global $toc_count;
-			global $toc;
-			$toc_count ++;
-
-			$toc[] = array('text' => trim(strip_tags($content[3])), 'depth' => $content[1], 'count' => $toc_count);
-
-			return "<h{$content[1]} {$content[2]}><a name=\"toc-{$toc_count}\"></a>{$content[3]}</h{$content[1]}>";
-		}, $content);
-
-		if( $toc_count ){
-			$catalog = theme_get_toc( $location = 'catalog' );
-			$catalog = '<div id="toc_container" class="article_toc">
-    						<div class="toc_title">文章目录 <span class="toc_toggle">「隐藏」</span></div>'
-    						.$catalog.
-						'</div>';
-			$content = $catalog.$content;
-		}
-		//防被镜像，文末加入本文链接
-		$content .= '<div class="ohmygod">本文首发于：<a href="'.esc_url( get_permalink() ).'" rel="bookmark">'.get_the_title().'-'.get_bloginfo('name').'</a></div>';
+		$toc_count ++;
+  
+		$toc[] = array('text' => trim(strip_tags($content[3])), 'depth' => $content[1], 'count' => $toc_count);
+  
+		return "<h{$content[1]} {$content[2]}><a name=\"toc-{$toc_count}\"></a>{$content[3]}</h{$content[1]}>";
+	  }, $content);
+  
+	  if( $toc_count ){
+		$catalog = theme_get_toc( $location = 'catalog' );
+		$catalog = '<div id="log-box"><div id="catalog">'
+				  .$catalog.
+			  '<p><span class="log-zd"><span class="log-close"><a title="隐藏目录"><strong>文章目录</strong></a></span></span></div></div>';
+		$content = $catalog.$content;
+	  }
+	  //防被镜像，文末加入本文链接
+	  $content .= '<div class="ohmygod">本文首发于：<a href="'.esc_url( get_permalink() ).'" rel="bookmark">'.get_the_title().'-'.get_bloginfo('name').'</a></div>';
 	}
 	return $content;
-});
-
-
-// 根据 $TOC 数组输出文章目录 HTML 代码 
-function theme_get_toc( $location = 'catalog' ){
+  });
+  
+  
+  // 根据 $TOC 数组输出文章目录 HTML 代码 
+  function theme_get_toc( $location = 'catalog' ){
 	global $toc;
 	$index = theme_wp_cache_get( get_the_ID().':'.md5(maybe_serialize(get_lastpostmodified())), 'cache-'.$location );
-
+  
 	if( $index === false && $toc ){
-		$index = '<ol class="toc_list '.$location.'">'."\n";
-		$prev_depth='';
-		$to_depth = 0;
-
-		foreach( $toc as $toc_item ){
-			$toc_depth = $toc_item['depth'];
-			if($prev_depth){
-				if($toc_depth == $prev_depth){
-					$index .= '</li>'."\n";
-				}elseif($toc_depth > $prev_depth){
-					$to_depth++;
-					$index .= '<ol>'."\n";
-				}else{
-					$to_depth2 = ( $to_depth > ($prev_depth - $toc_depth) )? ($prev_depth - $toc_depth) : $to_depth;
-					if($to_depth2){
-						for ($i=0; $i<$to_depth2; $i++){
-							$index .= '</li>'."\n".'</ol>'."\n";
-							$to_depth--;
-						}
-					}
-					$index .= '</li>';
-				}
+	  $index = '<ol class="'.$location.'">'."\n";
+	  $prev_depth='';
+	  $to_depth = 0;
+  
+	  foreach( $toc as $toc_item ){
+		$toc_depth = $toc_item['depth'];
+		if($prev_depth){
+		  if($toc_depth == $prev_depth){
+			$index .= '</li>'."\n";
+		  }elseif($toc_depth > $prev_depth){
+			$to_depth++;
+			$index .= '<ol>'."\n";
+		  }else{
+			$to_depth2 = ( $to_depth > ($prev_depth - $toc_depth) )? ($prev_depth - $toc_depth) : $to_depth;
+			if($to_depth2){
+			  for ($i=0; $i<$to_depth2; $i++){
+				$index .= '</li>'."\n".'</ol>'."\n";
+				$to_depth--;
+			  }
 			}
-			$index .= '<li><a title="'.$toc_item['text'].'" href="#toc-'.$toc_item['count'].'">'.$toc_item['text'].'</a>';
-			$prev_depth = $toc_item['depth'];
+			$index .= '</li>';
+		  }
 		}
-
-		for( $i=0; $i<=$to_depth; $i++ ){
-			$index .= '</li>'."\n".'</ol>'."\n";
-		}
-		theme_wp_cache_set( get_the_ID().':'.md5(maybe_serialize(get_lastpostmodified())), $index, 'cache-'.$location, 24 * HOUR_IN_SECONDS );
+		$index .= '<li><a title="'.$toc_item['text'].'" href="#toc-'.$toc_item['count'].'">'.$toc_item['text'].'</a>';
+		$prev_depth = $toc_item['depth'];
+	  }
+  
+	  for( $i=0; $i<=$to_depth; $i++ ){
+		$index .= '</li>'."\n".'</ol>'."\n";
+	  }
+	  theme_wp_cache_set( get_the_ID().':'.md5(maybe_serialize(get_lastpostmodified())), $index, 'cache-'.$location, 24 * HOUR_IN_SECONDS );
 	}
-
+  
 	return $index;
-}
-// 目录 - 水煮鱼 theme-toc end
+  }
+  // 目录 - 水煮鱼 theme-toc end
 
 // comments_popup_link() 加上  nofollow
 function add_nofollow_to_comments_popup_link(){

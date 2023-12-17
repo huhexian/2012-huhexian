@@ -26,7 +26,7 @@
 		<li><a class="scroll-b" title="转到底部" ><i class="icon-down-big"></i></a></li>
 		<?php
 			if ( comments_open() && ( is_single() || is_page() ) ) {
-				echo '<li><a class="scroll-c" title="留言评论"><i class="icon-chat"></i></a></li>';
+				echo '<li class="log log-no"><a class="log-button" title="文章目录"><i class="icon-th-list"></i></a><div class="log-prompt"><div class="log-arrow">文章目录</div></div></li><li><a class="scroll-c" title="留言评论"><i class="icon-chat"></i></a></li>';
 			}
 			if ( ox_get_option( 'darkmode' ) ){ //开启 夜间模式
 				echo '<li><a class="darkmode" href="javascript:applyCustomDarkModeSettings(toggleCustomDarkMode());" title="暗黑模式切换"><i class="icon-adjust"></i></a></li>';

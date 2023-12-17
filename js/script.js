@@ -6,12 +6,15 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 	});
 
-	// 目录 toc_toggle
-	$(".toc_toggle").click(function(e){
-		$(this).html(["「隐藏」", "「显示」"][this.hutia^=1]);
-		$(this.parentNode).next().slideToggle("fast","linear");
-		e.preventDefault();
-	});
+    // 目录
+    $(".log-button, .log-close").click(function() {
+    $("#log-box").fadeToggle(300);
+    });
+
+    if ($("#log-box").length > 0) {
+    $(".log").removeClass("log-no");
+    }
+    $('.log-prompt').show().delay(5000).fadeOut();
 
 	//RSS 小工具链接新窗口打开
 	$("a.rsswidget").attr('target', '_blank');

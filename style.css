@@ -2566,7 +2566,7 @@ html.dark, .dark body {
 .dark ::-webkit-input-placeholder { color:#ccc; }
 .dark :-ms-input-placeholder { color:#ccc; }
 
-.dark #toc_container ol li a:hover{
+.dark #catalog ol li a:hover{
 	background: #181818;
 	color: #fff;
 }
@@ -2888,18 +2888,6 @@ html.dark, .dark body {
 		font-weight: 400
 	}
 	
-	/*加粗*/
-	strong
-	{
-		margin: 0 -.4em;
-		padding: 0 .4em;
-		border-radius: .8em .3em;
-		background: 0 0;
-		background-image: linear-gradient( to right,rgba(255,225,0,.1),rgba(255,225,0,.7) 4%,rgba(255,225,0,.3) );
-		-webkit-box-decoration-break: clone;
-		box-decoration-break: clone;
-		}
-	
 	#toc_container {
 		float: right;
 		max-width: 200px;
@@ -2915,3 +2903,148 @@ html.dark, .dark body {
 .link-content li img{border-radius:100%;width:64px;height=64px;transition:0.5s;-webkit-transtion:1.5s}
 .link-content li span{display:block}
 .link-content li:hover img{transform:rotate(360deg);-webkit-transform:rotate(360deg);}
+
+/*目录*/
+.log-close a {
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+  }
+  
+  #log-box strong {
+	font-size: 14px;
+	color: #fff;
+  }
+  
+  .log-zd {
+	position: absolute;
+	padding: 3px 6px;
+	width: 23px;
+	background: #336699;
+	border-radius: 4px 0 0 4px;
+	top: -1px;
+	left: -35px;
+	text-indent: 0;
+	text-align: center;
+  }
+  
+  #log-box {
+	position: fixed;
+	background: #fff;
+	bottom: 68px;
+	right: 59px;
+	max-width: 360px;
+	min-width: 240px;
+	padding: 0 0 0 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccc;
+	border-radius: 0 4px 4px 4px;
+	z-index: 9999;
+	display: none;
+	animation: fade-in;
+	animation-duration: 0.5s;
+	-webkit-animation: fade-in 0.5s;
+  }
+  
+  #catalog {
+	min-height: 140px;
+	max-height: 320px;
+	overflow: scroll;
+	overflow-x: hidden;
+  }
+  
+  #catalog ol {
+	  text-indent: 1.4rem;
+	  margin: 5px 10px 0 0;
+	  padding: 0 0 0 5px;
+	  counter-reset: lia;
+  }
+  #catalog li {
+	list-style: none;
+	margin: 0;
+	width: 99%;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-overflow: ellipsis;
+	overflow: hidden;
+  }
+  
+  #catalog ol li a:hover {
+	background: #faeee4;
+  }
+  #catalog ol li:before {
+	margin-left: -1.4rem;
+	padding-right: 6px;
+	  counter-increment: lia;
+	  content: counter(lia) ".";
+  }
+  #catalog ol ol {
+	  counter-reset: lib;
+	  padding: 0 0 0 12px;
+	  margin: 0;
+  }
+  #catalog ol ol li:before {
+	padding-right: 6px;
+	  counter-increment: lib;
+	  content: counter(lia) "." counter(lib);
+  }
+  
+  #catalog ol ol ol {
+	  counter-reset: lic;
+  }
+  #catalog ol ol ol li:before {
+	padding-right: 6px;
+	  counter-increment: lic;
+	  content: counter(lia) "." counter(lib)"."counter(lic);
+  }
+  #catalog, #catalog a {
+	font-size: 14px;
+	line-height: 27px;
+  }
+  #catalog, #catalog a:hover {
+	text-decoration: none;
+  }
+  .log-no {
+	display: none;
+  }
+  .log {
+	position: relative;
+  }
+  
+  .log-prompt {
+	position: absolute;
+	bottom: 2px;
+	right: 45px;
+	color: #fff;
+	line-height: 27px;
+	animation: blink 1.5s linear infinite;
+  }
+  
+  .log-arrow {
+	position: relative;
+	width: 60px;
+	padding: 0 10px;
+	background: #0066a6;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .log-arrow:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 50%;
+	left: 100%;
+	margin-top: -5px;
+	border: 5px solid;
+	border-left-color: #f40;
+	border-right-color: #faeee4;
+	border-top-color: #faeee4;
+	border-bottom-color: #faeee4;
+  }
+  .log a {
+	font-size: 12px!important;
+	line-height: 32px;
+  }
