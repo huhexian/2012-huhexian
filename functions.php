@@ -1590,14 +1590,13 @@ function show_id() {
 		echo $output;
 	}
 }
-//分类、归档页面不显示私密文章
+//对未登录访客在分类、归档页面不显示私密文章
 //https://wpml.org/forums/topic/since-update-wp-6-0-menus-are-messed-up-und-untranslatetable/#post-11372711
 //add_action( 'pre_get_posts', function($query) { if ($query->get('post_type') === 'nav_menu_item') { $query->set('tax_query',''); } } );
 function theme_search_filter( $query ) {
-	if( is_admin() || is_home() || is_front_page() || is_singular() || ($query->get('post_type') === 'nav_menu_item') ){
+	if( is_admin() || is_user_logged_in() || is_home() || is_front_page() || is_singular() || ($query->get('post_type') === 'nav_menu_item') ){
 		return $query;
-	}
-	if ( $query->is_search || $query->is_archive ) {
+	} else if ( $query->is_search || $query->is_archive ) {
 		$query->set( 'post_status', 'publish' );
 		$query->set( 'post_type', array( 'post', 'page' ) );//归档页面 包含 页面 page
 		$query->set( 'orderby', 'modified');

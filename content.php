@@ -74,6 +74,13 @@
                 <footer class="content-foot"><!--文章页脚部显示修改-->
                     <?php the_tags('⚑Tags：','、'); ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 </footer><!-- .content-foot -->
+				<div class="author-info">
+					<div class="author-description">
+						<p>除非注明，<a href="<?php echo home_url(); ?>" target="_blank"><?php echo get_option('blogname'); ?></a>文章均为原创，本文地址 <a href="<?php the_permalink() ?>" target="_blank" rel="bookmark" ><?php the_permalink(); ?></a>，转载请以链接形式注明出处。</p>
+						<?php echo '<p>作者：<a class="author-link" href="'.esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ).'" title="查看作者所有文章" rel="author">'
+							.get_the_author().'</a> 简介：'.get_the_author_meta( "description" ).'</p>'; ?>
+					</div><!-- .author-description -->
+				</div><!-- .author-info -->
             <?php endif;  // has_tag() ?>
 		<?php else : ?>
 			<footer class="home-foot"><!--除文章页脚部显示修改-->
