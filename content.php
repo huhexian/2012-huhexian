@@ -26,7 +26,8 @@
 				Auth:<?php the_author_nickname(); ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				Date:<?php echo the_time('Y/m/j'); ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				Cat:<?php the_category('、'); ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				Word:<?php echo zm_count_words($text); ?>
+				Word:<?php echo zm_count_words($text); ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				Views:<?php the_views(); ?>
 			</p>
 			<?php else : ?>
 			<h1 class="entry-title">
@@ -50,6 +51,7 @@
 				</a>
 				<span class="comment anchor-fix"><?php comments_popup_link( '<meta itemprop="interactionCount" content="UserComments:0"/>暂无评论', '<meta itemprop="interactionCount" content="UserComments:1"/>1条评论', '<meta itemprop="interactionCount" content="UserComments:%"/>%条评论', '', '已关闭评论' ); ?></span>
 			</div>
+		
 		</header><!-- .entry-header -->
 
 		<?php if ( is_search() || is_category() || is_archive() || is_home() ) : //Display Excerpts for Search category archive home ?>
@@ -58,7 +60,7 @@
 		</div><!-- .entry-summary -->
 		<?php else : ?>
 		<div class="entry-content">
-			<?php the_content( __( '继续阅读 <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
 			<?php wp_link_pages(array('before' => '<div class="page-links">', 'after' => '</div>', 'next_or_number' => 'number')); ?>
 		</div><!-- .entry-content -->
 		<?php
@@ -70,18 +72,18 @@
 		<?php endif; ?>
 
 		<?php if ( is_single() ) : ?>
-            <?php if ( has_tag() ) : ?> <!--文章有标签才显示页脚-->
+			<?php if ( has_tag() ) : ?> <!--文章有标签才显示页脚-->
                 <footer class="content-foot"><!--文章页脚部显示修改-->
                     <?php the_tags('⚑Tags：','、'); ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 </footer><!-- .content-foot -->
-				<div class="author-info">
+            <?php endif;  // has_tag() ?>
+<div class="author-info">
 					<div class="author-description">
 						<p>除非注明，<a href="<?php echo home_url(); ?>" target="_blank"><?php echo get_option('blogname'); ?></a>文章均为原创，本文地址 <a href="<?php the_permalink() ?>" target="_blank" rel="bookmark" ><?php the_permalink(); ?></a>，转载请以链接形式注明出处。</p>
 						<?php echo '<p>作者：<a class="author-link" href="'.esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ).'" title="查看作者所有文章" rel="author">'
 							.get_the_author().'</a> 简介：'.get_the_author_meta( "description" ).'</p>'; ?>
 					</div><!-- .author-description -->
 				</div><!-- .author-info -->
-            <?php endif;  // has_tag() ?>
 		<?php else : ?>
 			<footer class="home-foot"><!--除文章页脚部显示修改-->
 				◷<?php echo the_time('Y/m/j'); ?>&nbsp&nbsp
@@ -89,5 +91,7 @@
 				▤<?php the_category('、'); ?>&nbsp&nbsp
 				⚑<?php the_tags('','、'); ?>
 			</footer><!-- .entry-meta -->
+
 		<?php endif;  // is_single() ?>
+
 	</article><!-- #post -->
