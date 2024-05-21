@@ -1943,6 +1943,13 @@ a.badge{
 	margin-left: 12px;
 	margin-left: 1.2rem;
 }
+h2.wp-block-heading{
+	font-size: 18px;
+	font-weight: normal;
+	border-bottom: 1px solid #ededed; 
+	margin-bottom: 14px;
+        margin-bottom: 1.4rem;
+}
 /*.widget_rss li {
 	margin: 12px 0;
 	margin: 1.2rem 0;
