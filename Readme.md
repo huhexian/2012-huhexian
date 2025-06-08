@@ -1,5 +1,7 @@
 ![](https://github.com/huhexian/2012-huhexian/blob/main/screenshot.png)
 
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
+
 ## 关于主题
 原型是 WordPress 的官方默认主题 Twenty Twelve。后来经 xuv.cc 修改为[木头人版本](https://xuv.cc)，我在此基础上，根据自己的喜好又进行修改。
 
